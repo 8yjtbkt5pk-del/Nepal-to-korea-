@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#f6efe4">
+<title>Nepal → Korea</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f6efe4;color:#202020;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif}
+button,input,select{font:inherit}
+.app{max-width:480px;min-height:100vh;margin:auto;padding:22px 18px 30px}
+.screen{min-height:calc(100vh - 52px);display:flex;flex-direction:column}
+.center{justify-content:center;text-align:center}
+.logo{font-size:46px;margin-bottom:14px}
+h1{font-size:34px;margin:0 0 10px;font-weight:800}
+h2{font-size:25px;margin:0 0 18px}
+.subtitle{color:#777;line-height:1.5}
+.card{background:#fffaf3;border:1px solid #e5dccf;border-radius:22px;padding:20px;box-shadow:0 8px 25px rgba(70,50,30,.06)}
+.spacer{flex:1}
+.btn{border:0;border-radius:16px;padding:17px 16px;margin-top:10px;width:100%;font-weight:700;cursor:pointer;background:#242424;color:white}
+.btn.secondary{background:#e9e0d4;color:#222}
+.btn.action{text-align:left;background:#fff;border:1px solid #e1d7ca;color:#222}
+.btn.action small{display:block;color:#777;font-weight:500;margin-top:5px}
+.input{width:100%;padding:15px;border:1px solid #d9cfc2;border-radius:14px;background:#fff;font-size:17px;margin:7px 0 15px}
+label{font-weight:700;font-size:14px}
+select{width:100%;padding:15px;border:1px solid #d9cfc2;border-radius:14px;background:#fff;margin-top:7px}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;font-weight:800}
+.day{color:#777;font-size:14px}
+.money{font-size:27px;font-weight:800;margin:10px 0 18px}
+.stat{margin:12px 0}
+.statrow{display:flex;justify-content:space-between;font-size:14px;font-weight:700;margin-bottom:6px}
+.bar{height:10px;background:#e5ddd3;border-radius:20px;overflow:hidden}
+.fill{height:100%;border-radius:20px;background:#3e8c67;transition:.25s}
+.event{margin:22px 0 14px}
+.event h3{margin:0 0 8px;font-size:20px}
+.event p{color:#666;line-height:1.5;margin:0}
+.result{text-align:center;margin:22px 0;font-size:18px;line-height:1.8}
+.positive{color:#267a54}.negative{color:#b34b45}
+.notice{color:#777;text-align:center;font-size:13px;margin-top:12px}
+.hidden{display:none!important}
+.back{background:none;border:0;padding:0;color:#555;font-weight:700;margin-bottom:20px}
+.footer{text-align:center;color:#aaa;font-size:12px;margin-top:20px}
+</style>
+</head>
+<body>
+<div id="app" class="app"></div>
+
+<script>
+const defaultPlayer={
+ name:"",age:20,goal:"Study",day:1,money:100000,
+ health:100,energy:100,happiness:70,study:10
+};
+let player=JSON.parse(localStorage.getItem("ntk_save")||"null")||structuredClone(defaultPlayer);
+
+const app=document.getElementById("app");
+const save=()=>localStorage.setItem("ntk_save",JSON.stringify(player));
+const money=n=>"₩"+Math.max(0,n).toLocaleString("en-US");
+const clamp=n=>Math.max(0,Math.min(100,n));
+const stat=(name,value)=>`
+<div class="stat">
+ <div class="statrow"><span>${name}</span><span>${value}/100</span></div>
+ <div class="bar"><div class="fill" style="width:${value}%"></div></div>
+</div>`;
+
+function start(){
+app.innerHTML=`
+<div class="screen center">
+ <div>
+  <div class="logo">🇳🇵 ✈️ 🇰🇷</div>
+  <h1>NEPAL → KOREA</h1>
+  <p class="subtitle">Your life. Your choices.<br>Your future.</p>
+ </div>
+ <div class="spacer"></div>
+ <div>
+  <button class="btn" onclick="newGame()">START NEW GAME</button>
+  <button class="btn secondary" onclick="continueGame()">CONTINUE</button>
+  <button class="btn secondary" onclick="settings()">SETTINGS</button>
+  <div class="footer">Web Prototype • Build 0.1</div>
+ </div>
+</div>`;
+}
+
+function newGame(){
+player=structuredClone(defaultPlayer);
+setup();
+}
+function continueGame(){
+if(localStorage.getItem("ntk_save")) game();
+else alert("No saved game yet. Start a new game first.");
+}
+function settings(){
+alert("Build 0.1 settings: progress is automatically saved on this device. More settings will come later.");
+}
+function setup(){
+app.innerHTML=`
+<div class="screen">
+ <button class="back" onclick="start()">← Back</button>
+ <div class="card">
+  <h2>Create your character</h2>
+  <label>Name</label>
+  <input id="name" class="input" placeholder="Enter your name" maxlength="20">
+  <label>Age</label>
+  <input id="age" class="input" type="number" min="16" max="60" value="20">
+  <label>Main goal</label>
+  <select id="goal">
+   <option>Study</option><option>Work</option><option>Business</option>
+  </select>
+  <button class="btn" onclick="createCharacter()">CONTINUE</button>
+ </div>
+</div>`;
+}
+
+function createCharacter(){
+const name=document.getElementById("name").value.trim();
+if(!name){alert("Please enter your name.");return}
+player.name=name;
+player.age=Number(document.getElementById("age").value)||20;
+player.goal=document.getElementById("goal").value;
+save(); game();
+}
+
+function game(){
+app.innerHTML=`
+<div class="screen">
+ <div class="header">
+  <span>🇳🇵 NEPAL → KOREA</span><span class="day">DAY ${player.day}</span>
+ </div>
+ <div class="card">
+  <div class="money">💰 ${money(player.money)}</div>
+  ${stat("❤️ Health",player.health)}
+  ${stat("⚡ Energy",player.energy)}
+  ${stat("😊 Happiness",player.happiness)}
+  ${stat("📚 Study",player.study)}
+ </div>
+ <div class="event">
+  <h3>A Free Day</h3>
+  <p>Hello ${player.name}! What will you do today?</p>
+ </div>
+ <div id="actions">
+  <button class="btn action" onclick="act('study')">📚 Study<small>+5 Study · −15 Energy</small></button>
+  <button class="btn action" onclick="act('work')">💼 Work<small>+₩20,000 · −20 Energy</small></button>
+  <button class="btn action" onclick="act('rest')">😴 Rest<small>+20 Energy · +3 Happiness</small></button>
+  <button class="btn action" onclick="act('friends')">👥 Friends<small>−₩5,000 · +15 Happiness · −10 Energy</small></button>
+ </div>
+ <div id="result"></div>
+</div>`;
+}
+
+function act(type){
+let effects=[];
+if(type==="study"){
+ player.study=clamp(player.study+5);player.energy=clamp(player.energy-15);
+ effects=[["📚 Study","+5","positive"],["⚡ Energy","−15","negative"]];
+}
+if(type==="work"){
+ player.money+=20000;player.energy=clamp(player.energy-20);
+ effects=[["💰 Money","+₩20,000","positive"],["⚡ Energy","−20","negative"]];
+}
+if(type==="rest"){
+ player.energy=clamp(player.energy+20);player.happiness=clamp(player.happiness+3);
+ effects=[["⚡ Energy","+20","positive"],["😊 Happiness","+3","positive"]];
+}
+if(type==="friends"){
+ player.money=Math.max(0,player.money-5000);player.happiness=clamp(player.happiness+15);player.energy=clamp(player.energy-10);
+ effects=[["💰 Money","−₩5,000","negative"],["😊 Happiness","+15","positive"],["⚡ Energy","−10","negative"]];
+}
+save();
+document.getElementById("actions").classList.add("hidden");
+document.getElementById("result").innerHTML=`
+<div class="card result">
+ <strong>DAY ${player.day} COMPLETE</strong><br>
+ ${effects.map(e=>`<span class="${e[2]}">${e[0]} ${e[1]}</span>`).join("<br>")}
+ <button class="btn" onclick="nextDay()">NEXT DAY</button>
+</div>`;
+}
+
+function nextDay(){
+player.day++;
+save();game();
+}
+start();
+</script>
+</body>
+</html>

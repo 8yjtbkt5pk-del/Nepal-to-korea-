@@ -1,185 +1,2179 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#f6efe4">
-<title>Nepal → Korea</title>
+
+<meta name="viewport"
+      content="width=device-width,
+               initial-scale=1.0,
+               maximum-scale=1.0,
+               user-scalable=no">
+
+<meta name="theme-color" content="#101820">
+
+<title>Korea Idle Tycoon - Build 0.1.1</title>
+
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#f6efe4;color:#202020;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif}
-button,input,select{font:inherit}
-.app{max-width:480px;min-height:100vh;margin:auto;padding:22px 18px 30px}
-.screen{min-height:calc(100vh - 52px);display:flex;flex-direction:column}
-.center{justify-content:center;text-align:center}
-.logo{font-size:46px;margin-bottom:14px}
-h1{font-size:34px;margin:0 0 10px;font-weight:800}
-h2{font-size:25px;margin:0 0 18px}
-.subtitle{color:#777;line-height:1.5}
-.card{background:#fffaf3;border:1px solid #e5dccf;border-radius:22px;padding:20px;box-shadow:0 8px 25px rgba(70,50,30,.06)}
-.spacer{flex:1}
-.btn{border:0;border-radius:16px;padding:17px 16px;margin-top:10px;width:100%;font-weight:700;cursor:pointer;background:#242424;color:white}
-.btn.secondary{background:#e9e0d4;color:#222}
-.btn.action{text-align:left;background:#fff;border:1px solid #e1d7ca;color:#222}
-.btn.action small{display:block;color:#777;font-weight:500;margin-top:5px}
-.input{width:100%;padding:15px;border:1px solid #d9cfc2;border-radius:14px;background:#fff;font-size:17px;margin:7px 0 15px}
-label{font-weight:700;font-size:14px}
-select{width:100%;padding:15px;border:1px solid #d9cfc2;border-radius:14px;background:#fff;margin-top:7px}
-.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;font-weight:800}
-.day{color:#777;font-size:14px}
-.money{font-size:27px;font-weight:800;margin:10px 0 18px}
-.stat{margin:12px 0}
-.statrow{display:flex;justify-content:space-between;font-size:14px;font-weight:700;margin-bottom:6px}
-.bar{height:10px;background:#e5ddd3;border-radius:20px;overflow:hidden}
-.fill{height:100%;border-radius:20px;background:#3e8c67;transition:.25s}
-.event{margin:22px 0 14px}
-.event h3{margin:0 0 8px;font-size:20px}
-.event p{color:#666;line-height:1.5;margin:0}
-.result{text-align:center;margin:22px 0;font-size:18px;line-height:1.8}
-.positive{color:#267a54}.negative{color:#b34b45}
-.notice{color:#777;text-align:center;font-size:13px;margin-top:12px}
-.hidden{display:none!important}
-.back{background:none;border:0;padding:0;color:#555;font-weight:700;margin-bottom:20px}
-.footer{text-align:center;color:#aaa;font-size:12px;margin-top:20px}
+
+/* =========================
+   BASIC
+========================= */
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+    background: #0b1117;
+    color: white;
+    overflow-x: hidden;
+}
+
+button {
+    font: inherit;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+.app {
+    width: 100%;
+    max-width: 480px;
+    min-height: 100vh;
+    margin: auto;
+
+    background:
+        linear-gradient(
+            180deg,
+            #17232d 0%,
+            #101820 45%,
+            #0c141b 100%
+        );
+
+    overflow: hidden;
+    position: relative;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    padding: 18px 16px 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.flag {
+    font-size: 30px;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+}
+
+.version {
+    color: #81909c;
+    font-size: 11px;
+    margin-top: 2px;
+}
+
+.settings {
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid #34434f;
+    border-radius: 50%;
+
+    background: #202d37;
+    color: white;
+
+    font-size: 19px;
+}
+
+
+/* =========================
+   MONEY CARD
+========================= */
+
+.money-card {
+    margin: 8px 16px 14px;
+    padding: 17px 18px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #253947,
+            #17242e
+        );
+
+    border: 1px solid #3a4d5a;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.28);
+}
+
+.money-label {
+    color: #9eabb5;
+    font-size: 12px;
+}
+
+.money {
+    margin-top: 3px;
+
+    font-size: 31px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.income {
+    margin-top: 4px;
+
+    color: #65e88b;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+
+/* =========================
+   MAP
+========================= */
+
+.map {
+    position: relative;
+
+    margin: 0 12px;
+
+    height: 370px;
+
+    overflow: hidden;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8bbf72,
+            #6da65d
+        );
+
+    border: 2px solid #3d6543;
+
+    box-shadow:
+        inset 0 0 40px rgba(0,0,0,0.12),
+        0 12px 30px rgba(0,0,0,0.25);
+}
+
+
+/* water */
+
+.water {
+    position: absolute;
+
+    width: 150px;
+    height: 430px;
+
+    right: -55px;
+    top: -80px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #69b8d1,
+            #4d99ba
+        );
+
+    transform: rotate(17deg);
+
+    opacity: 0.95;
+
+    border-left: 3px solid rgba(255,255,255,0.18);
+}
+
+
+/* roads */
+
+.road-horizontal {
+    position: absolute;
+
+    left: -20px;
+    right: -20px;
+
+    top: 225px;
+
+    height: 54px;
+
+    background: #555d62;
+
+    border-top: 3px solid #747c80;
+    border-bottom: 3px solid #41484c;
+
+    transform: rotate(-4deg);
+}
+
+.road-vertical {
+    position: absolute;
+
+    top: -50px;
+    bottom: -50px;
+
+    left: 235px;
+
+    width: 50px;
+
+    background: #555d62;
+
+    border-left: 3px solid #747c80;
+    border-right: 3px solid #41484c;
+
+    transform: rotate(9deg);
+}
+
+
+/* road markings */
+
+.road-line {
+    position: absolute;
+
+    width: 36px;
+    height: 4px;
+
+    background: #e7d77b;
+
+    top: 249px;
+    left: 30px;
+
+    transform: rotate(-4deg);
+
+    box-shadow:
+        70px 5px 0 #e7d77b,
+        140px 10px 0 #e7d77b,
+        210px 15px 0 #e7d77b,
+        280px 20px 0 #e7d77b,
+        350px 25px 0 #e7d77b;
+}
+
+
+/* =========================
+   LAND
+========================= */
+
+.land {
+    position: absolute;
+
+    width: 105px;
+    height: 85px;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #a7d47d,
+            #83bb62
+        );
+
+    border: 3px solid #6b9d50;
+
+    box-shadow:
+        0 5px 0 rgba(0,0,0,0.12);
+}
+
+.land.one {
+    left: 22px;
+    top: 38px;
+}
+
+.land.two {
+    left: 145px;
+    top: 45px;
+}
+
+.land.three {
+    left: 25px;
+    top: 295px;
+}
+
+.land.four {
+    left: 150px;
+    top: 302px;
+}
+
+
+/* locked land */
+
+.locked {
+    background:
+        linear-gradient(
+            145deg,
+            #87977d,
+            #707e6d
+        );
+
+    border: 3px dashed #52604e;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #d6ddd1;
+    font-size: 26px;
+}
+
+
+/* =========================
+   TREES
+========================= */
+
+.tree {
+    position: absolute;
+
+    font-size: 28px;
+
+    filter:
+        drop-shadow(
+            0 3px 1px rgba(0,0,0,0.2)
+        );
+}
+
+.tree.t1 {
+    left: 8px;
+    top: 120px;
+}
+
+.tree.t2 {
+    left: 120px;
+    top: 125px;
+}
+
+.tree.t3 {
+    left: 345px;
+    top: 55px;
+}
+
+.tree.t4 {
+    left: 375px;
+    top: 300px;
+}
+
+.tree.t5 {
+    left: 110px;
+    top: 330px;
+}
+
+
+/* =========================
+   BUSINESS
+========================= */
+
+.business {
+    position: absolute;
+
+    left: 47px;
+    top: 53px;
+
+    width: 95px;
+    height: 75px;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #e6edf1
+        );
+
+    border: 3px solid #c3d0d8;
+
+    box-shadow:
+        0 8px 15px rgba(0,0,0,0.25);
+
+    color: #17232d;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 10;
+}
+
+.business-icon {
+    font-size: 29px;
+    line-height: 1;
+}
+
+.business-name {
+    margin-top: 4px;
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.level {
+    position: absolute;
+
+    right: -8px;
+    top: -10px;
+
+    padding: 4px 8px;
+
+    border-radius: 10px;
+
+    background: #f2c94c;
+    color: #332800;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    border: 2px solid white;
+}
+
+
+/* =========================
+   CUSTOMER
+========================= */
+
+.customer {
+    position: absolute;
+
+    z-index: 20;
+
+    font-size: 23px;
+
+    animation:
+        customerMove 7s linear infinite;
+}
+
+.customer.c1 {
+    left: 270px;
+    top: 203px;
+
+    animation-delay: 0s;
+}
+
+.customer.c2 {
+    left: 320px;
+    top: 238px;
+
+    animation-delay: 2s;
+}
+
+.customer.c3 {
+    left: 185px;
+    top: 211px;
+
+    animation-delay: 4s;
+}
+
+@keyframes customerMove {
+
+    0% {
+        transform: translateX(-15px);
+    }
+
+    50% {
+        transform: translateX(45px);
+    }
+
+    100% {
+        transform: translateX(-15px);
+    }
+}
+
+
+/* =========================
+   CARS
+========================= */
+
+.car {
+    position: absolute;
+
+    z-index: 15;
+
+    font-size: 24px;
+
+    animation:
+        carMove 8s linear infinite;
+}
+
+.car.c1 {
+    left: 20px;
+    top: 235px;
+}
+
+.car.c2 {
+    left: 280px;
+    top: 244px;
+
+    animation-delay: 3s;
+}
+
+@keyframes carMove {
+
+    0% {
+        transform: translateX(-30px);
+    }
+
+    50% {
+        transform: translateX(180px);
+    }
+
+    100% {
+        transform: translateX(-30px);
+    }
+}
+
+
+/* =========================
+   MAP LABEL
+========================= */
+
+.location-label {
+    position: absolute;
+
+    right: 14px;
+    top: 15px;
+
+    padding: 7px 11px;
+
+    border-radius: 12px;
+
+    background: rgba(17,28,35,0.78);
+
+    color: white;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    backdrop-filter: blur(6px);
+
+    z-index: 50;
+}
+
+
+/* =========================
+   BUSINESS CARD
+========================= */
+
+.business-card {
+    margin: 14px 16px;
+
+    padding: 16px;
+
+    border-radius: 21px;
+
+    background: #192631;
+
+    border: 1px solid #344552;
+}
+
+.business-top {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.business-title {
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.business-subtitle {
+    margin-top: 3px;
+
+    color: #84939e;
+
+    font-size: 12px;
+}
+
+.production {
+    text-align: right;
+
+    color: #62e68a;
+
+    font-size: 14px;
+
+    font-weight: 800;
+}
+
+.production span {
+    display: block;
+
+    color: #71808c;
+
+    font-size: 10px;
+    font-weight: 500;
+}
+
+
+/* =========================
+   UPGRADE
+========================= */
+
+.upgrade {
+    width: 100%;
+
+    margin-top: 14px;
+
+    padding: 15px;
+
+    border: 0;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #3bcf70,
+            #21a957
+        );
+
+    color: white;
+
+    font-weight: 900;
+
+    box-shadow:
+        0 7px 18px rgba(30,180,90,0.22);
+}
+
+.upgrade small {
+    display: block;
+
+    margin-top: 3px;
+
+    opacity: 0.8;
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   INFO CARDS
+========================= */
+
+.info-row {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 10px;
+
+    margin: 0 16px 14px;
+}
+
+.info-card {
+    padding: 14px;
+
+    border-radius: 17px;
+
+    background: #18242d;
+
+    border: 1px solid #2e404d;
+}
+
+.info-icon {
+    font-size: 22px;
+}
+
+.info-title {
+    margin-top: 5px;
+
+    color: #7f8f9b;
+
+    font-size: 11px;
+}
+
+.info-value {
+    margin-top: 3px;
+
+    font-size: 17px;
+    font-weight: 900;
+}
+
+
+/* =========================
+   BOTTOM NAV
+========================= */
+
+.bottom-nav {
+
+    position: sticky;
+
+    bottom: 0;
+
+    z-index: 100;
+
+    padding:
+        10px
+        12px
+        calc(10px + env(safe-area-inset-bottom));
+
+    background:
+        rgba(12,20,27,0.94);
+
+    border-top:
+        1px solid #26343e;
+
+    backdrop-filter:
+        blur(14px);
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 5px;
+}
+
+.nav-button {
+
+    padding: 9px 3px;
+
+    border: 0;
+
+    border-radius: 13px;
+
+    background: transparent;
+
+    color: #73818c;
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+.nav-button .icon {
+    display: block;
+
+    font-size: 21px;
+
+    margin-bottom: 3px;
+}
+
+.nav-button.active {
+    background: #24333e;
+    color: white;
+}
+
+
+/* =========================
+   SETTINGS PANEL
+========================= */
+
+.settings-panel {
+
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 500;
+
+    background:
+        rgba(0,0,0,0.72);
+
+    align-items: flex-end;
+
+    justify-content: center;
+}
+
+.settings-panel.show {
+    display: flex;
+}
+
+.settings-box {
+
+    width: 100%;
+    max-width: 480px;
+
+    padding: 22px 18px
+             calc(25px + env(safe-area-inset-bottom));
+
+    background: #18242d;
+
+    border-radius:
+        26px 26px 0 0;
+
+    border-top:
+        1px solid #394c59;
+}
+
+.settings-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.settings-title {
+
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.close {
+
+    border: 0;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    background: #293943;
+
+    color: white;
+
+    font-size: 20px;
+}
+
+.reset {
+
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding: 14px;
+
+    border: 1px solid #713d42;
+
+    border-radius: 14px;
+
+    background: #3b2024;
+
+    color: #ff9d9d;
+
+    font-weight: 800;
+}
+
+
+/* =========================
+   OFFLINE POPUP
+========================= */
+
+.popup {
+
+    position: fixed;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.95);
+
+    width: calc(100% - 40px);
+
+    max-width: 400px;
+
+    z-index: 600;
+
+    padding: 25px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #253a49,
+            #17252f
+        );
+
+    border: 1px solid #486170;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,0.55);
+
+    text-align: center;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        0.25s ease;
+}
+
+.popup.show {
+
+    opacity: 1;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+
+    pointer-events: auto;
+}
+
+.popup-icon {
+    font-size: 48px;
+}
+
+.popup-title {
+
+    margin-top: 8px;
+
+    font-size: 21px;
+    font-weight: 900;
+}
+
+.popup-money {
+
+    margin-top: 8px;
+
+    color: #62e68a;
+
+    font-size: 29px;
+    font-weight: 900;
+}
+
+.popup-text {
+
+    margin-top: 8px;
+
+    color: #9aa8b1;
+
+    font-size: 13px;
+}
+
+.popup-button {
+
+    width: 100%;
+
+    margin-top: 18px;
+
+    padding: 14px;
+
+    border: 0;
+
+    border-radius: 14px;
+
+    background: #36c96d;
+
+    color: white;
+
+    font-weight: 900;
+}
+
+
+/* =========================
+   MONEY FLOAT
+========================= */
+
+.money-float {
+
+    position: fixed;
+
+    z-index: 700;
+
+    color: #67ed91;
+
+    font-size: 16px;
+
+    font-weight: 900;
+
+    pointer-events: none;
+
+    animation:
+        floatMoney 1.2s ease-out forwards;
+}
+
+@keyframes floatMoney {
+
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-70px);
+    }
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 360px) {
+
+    .map {
+        height: 340px;
+    }
+
+    .money {
+        font-size: 27px;
+    }
+
+}
+
 </style>
+
 </head>
+
+
 <body>
-<div id="app" class="app"></div>
+
+<div class="app">
+
+
+    <!-- =====================
+         HEADER
+    ====================== -->
+
+    <header class="header">
+
+        <div class="logo-area">
+
+            <div class="flag">
+                🇰🇷
+            </div>
+
+            <div>
+
+                <div class="logo">
+                    KOREA IDLE TYCOON
+                </div>
+
+                <div class="version">
+                    Build 0.1.1
+                </div>
+
+            </div>
+
+        </div>
+
+        <button
+            class="settings"
+            onclick="openSettings()">
+
+            ⚙️
+
+        </button>
+
+    </header>
+
+
+    <!-- =====================
+         MONEY
+    ====================== -->
+
+    <section class="money-card">
+
+        <div class="money-label">
+            YOUR MONEY
+        </div>
+
+        <div
+            class="money"
+            id="money">
+
+            ₩10,000
+
+        </div>
+
+        <div
+            class="income"
+            id="income">
+
+            +₩100 / sec
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================
+         MAP
+    ====================== -->
+
+    <section class="map">
+
+        <div class="location-label">
+            📍 SEOUL
+        </div>
+
+
+        <div class="water"></div>
+
+
+        <!-- roads -->
+
+        <div class="road-horizontal"></div>
+
+        <div class="road-vertical"></div>
+
+        <div class="road-line"></div>
+
+
+        <!-- land -->
+
+        <div class="land one"></div>
+
+        <div class="land two"></div>
+
+        <div class="land three"></div>
+
+        <div class="land four locked">
+            🔒
+        </div>
+
+
+        <!-- trees -->
+
+        <div class="tree t1">
+            🌳
+        </div>
+
+        <div class="tree t2">
+            🌲
+        </div>
+
+        <div class="tree t3">
+            🌳
+        </div>
+
+        <div class="tree t4">
+            🌲
+        </div>
+
+        <div class="tree t5">
+            🌳
+        </div>
+
+
+        <!-- business -->
+
+        <div
+            class="business"
+            id="business">
+
+            <div
+                class="level"
+                id="level">
+
+                LV.1
+
+            </div>
+
+            <div class="business-icon">
+                🏪
+            </div>
+
+            <div class="business-name">
+                MINI MART
+            </div>
+
+        </div>
+
+
+        <!-- customers -->
+
+        <div class="customer c1">
+            🚶
+        </div>
+
+        <div class="customer c2">
+            🚶‍♀️
+        </div>
+
+        <div class="customer c3">
+            🧑
+        </div>
+
+
+        <!-- cars -->
+
+        <div class="car c1">
+            🚗
+        </div>
+
+        <div class="car c2">
+            🚙
+        </div>
+
+    </section>
+
+
+    <!-- =====================
+         BUSINESS CARD
+    ====================== -->
+
+    <section class="business-card">
+
+        <div class="business-top">
+
+            <div>
+
+                <div class="business-title">
+                    🏪 Mini Mart
+                </div>
+
+                <div
+                    class="business-subtitle"
+                    id="businessDescription">
+
+                    Your first Korean business
+
+                </div>
+
+            </div>
+
+            <div
+                class="production"
+                id="production">
+
+                +₩100
+
+                <span>
+                    per second
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="upgrade"
+            id="upgradeButton"
+            onclick="upgradeBusiness()">
+
+            ⬆️ UPGRADE
+
+            <small id="upgradeCost">
+                Cost: ₩1,000
+            </small>
+
+        </button>
+
+    </section>
+
+
+    <!-- =====================
+         INFO
+    ====================== -->
+
+    <section class="info-row">
+
+        <div class="info-card">
+
+            <div class="info-icon">
+                👥
+            </div>
+
+            <div class="info-title">
+                CUSTOMERS
+            </div>
+
+            <div
+                class="info-value"
+                id="customers">
+
+                12
+
+            </div>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="info-icon">
+                📊
+            </div>
+
+            <div class="info-title">
+                BUSINESS LEVEL
+            </div>
+
+            <div
+                class="info-value"
+                id="levelInfo">
+
+                Level 1
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================
+         BOTTOM NAV
+    ====================== -->
+
+    <nav class="bottom-nav">
+
+        <button
+            class="nav-button active"
+            onclick="showHome()">
+
+            <span class="icon">
+                🗺️
+            </span>
+
+            City
+
+        </button>
+
+
+        <button
+            class="nav-button"
+            onclick="showBusiness()">
+
+            <span class="icon">
+                🏪
+            </span>
+
+            Business
+
+        </button>
+
+
+        <button
+            class="nav-button"
+            onclick="showMoney()">
+
+            <span class="icon">
+                💰
+            </span>
+
+            Economy
+
+        </button>
+
+
+        <button
+            class="nav-button"
+            onclick="showInfo()">
+
+            <span class="icon">
+                👤
+            </span>
+
+            Profile
+
+        </button>
+
+    </nav>
+
+</div>
+
+
+<!-- =========================
+     SETTINGS
+========================= -->
+
+<div
+    class="settings-panel"
+    id="settingsPanel">
+
+    <div class="settings-box">
+
+        <div class="settings-header">
+
+            <div class="settings-title">
+                ⚙️ Settings
+            </div>
+
+            <button
+                class="close"
+                onclick="closeSettings()">
+
+                ✕
+
+            </button>
+
+        </div>
+
+
+        <p style="color:#8d9ba5;line-height:1.5">
+
+            Korea Idle Tycoon<br>
+            Build 0.1.1
+
+        </p>
+
+
+        <button
+            class="reset"
+            onclick="resetGame()">
+
+            🗑️ Reset Game
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     OFFLINE POPUP
+========================= -->
+
+<div
+    class="popup"
+    id="offlinePopup">
+
+    <div class="popup-icon">
+        💤
+    </div>
+
+    <div class="popup-title">
+        Welcome Back!
+    </div>
+
+    <div
+        class="popup-money"
+        id="offlineMoney">
+
+        +₩0
+
+    </div>
+
+    <div
+        class="popup-text"
+        id="offlineText">
+
+        Your business continued earning
+        while you were away.
+
+    </div>
+
+    <button
+        class="popup-button"
+        onclick="closeOfflinePopup()">
+
+        Collect Money
+
+    </button>
+
+</div>
+
 
 <script>
-const defaultPlayer={
- name:"",age:20,goal:"Study",day:1,money:100000,
- health:100,energy:100,happiness:70,study:10
+
+/* =====================================================
+   KOREA IDLE TYCOON
+   BUILD 0.1.1
+===================================================== */
+
+
+/* =========================
+   GAME DATA
+========================= */
+
+const DEFAULT_GAME = {
+
+    money: 10000,
+
+    level: 1,
+
+    incomePerSecond: 100,
+
+    customers: 12,
+
+    lastPlayed: Date.now()
+
 };
-let player=JSON.parse(localStorage.getItem("ntk_save")||"null")||structuredClone(defaultPlayer);
 
-const app=document.getElementById("app");
-const save=()=>localStorage.setItem("ntk_save",JSON.stringify(player));
-const money=n=>"₩"+Math.max(0,n).toLocaleString("en-US");
-const clamp=n=>Math.max(0,Math.min(100,n));
-const stat=(name,value)=>`
-<div class="stat">
- <div class="statrow"><span>${name}</span><span>${value}/100</span></div>
- <div class="bar"><div class="fill" style="width:${value}%"></div></div>
-</div>`;
 
-function start(){
-app.innerHTML=`
-<div class="screen center">
- <div>
-  <div class="logo">🇳🇵 ✈️ 🇰🇷</div>
-  <h1>NEPAL → KOREA</h1>
-  <p class="subtitle">Your life. Your choices.<br>Your future.</p>
- </div>
- <div class="spacer"></div>
- <div>
-  <button class="btn" onclick="newGame()">START NEW GAME</button>
-  <button class="btn secondary" onclick="continueGame()">CONTINUE</button>
-  <button class="btn secondary" onclick="settings()">SETTINGS</button>
-  <div class="footer">Web Prototype • Build 0.1</div>
- </div>
-</div>`;
-}
+/* =========================
+   LOAD GAME
+========================= */
 
-function newGame(){
-player=structuredClone(defaultPlayer);
-setup();
-}
-function continueGame(){
-if(localStorage.getItem("ntk_save")) game();
-else alert("No saved game yet. Start a new game first.");
-}
-function settings(){
-alert("Build 0.1 settings: progress is automatically saved on this device. More settings will come later.");
-}
-function setup(){
-app.innerHTML=`
-<div class="screen">
- <button class="back" onclick="start()">← Back</button>
- <div class="card">
-  <h2>Create your character</h2>
-  <label>Name</label>
-  <input id="name" class="input" placeholder="Enter your name" maxlength="20">
-  <label>Age</label>
-  <input id="age" class="input" type="number" min="16" max="60" value="20">
-  <label>Main goal</label>
-  <select id="goal">
-   <option>Study</option><option>Work</option><option>Business</option>
-  </select>
-  <button class="btn" onclick="createCharacter()">CONTINUE</button>
- </div>
-</div>`;
+let game = loadGame();
+
+
+function loadGame() {
+
+    const saved =
+        localStorage.getItem(
+            "koreaIdleTycoon"
+        );
+
+    if (!saved) {
+
+        return {
+            ...DEFAULT_GAME
+        };
+
+    }
+
+    try {
+
+        return JSON.parse(saved);
+
+    } catch (error) {
+
+        return {
+            ...DEFAULT_GAME
+        };
+
+    }
+
 }
 
-function createCharacter(){
-const name=document.getElementById("name").value.trim();
-if(!name){alert("Please enter your name.");return}
-player.name=name;
-player.age=Number(document.getElementById("age").value)||20;
-player.goal=document.getElementById("goal").value;
-save(); game();
+
+/* =========================
+   SAVE GAME
+========================= */
+
+function saveGame() {
+
+    game.lastPlayed = Date.now();
+
+    localStorage.setItem(
+        "koreaIdleTycoon",
+        JSON.stringify(game)
+    );
+
 }
 
-function game(){
-app.innerHTML=`
-<div class="screen">
- <div class="header">
-  <span>🇳🇵 NEPAL → KOREA</span><span class="day">DAY ${player.day}</span>
- </div>
- <div class="card">
-  <div class="money">💰 ${money(player.money)}</div>
-  ${stat("❤️ Health",player.health)}
-  ${stat("⚡ Energy",player.energy)}
-  ${stat("😊 Happiness",player.happiness)}
-  ${stat("📚 Study",player.study)}
- </div>
- <div class="event">
-  <h3>A Free Day</h3>
-  <p>Hello ${player.name}! What will you do today?</p>
- </div>
- <div id="actions">
-  <button class="btn action" onclick="act('study')">📚 Study<small>+5 Study · −15 Energy</small></button>
-  <button class="btn action" onclick="act('work')">💼 Work<small>+₩20,000 · −20 Energy</small></button>
-  <button class="btn action" onclick="act('rest')">😴 Rest<small>+20 Energy · +3 Happiness</small></button>
-  <button class="btn action" onclick="act('friends')">👥 Friends<small>−₩5,000 · +15 Happiness · −10 Energy</small></button>
- </div>
- <div id="result"></div>
-</div>`;
+
+/* =========================
+   FORMAT MONEY
+========================= */
+
+function formatMoney(number) {
+
+    number = Math.floor(number);
+
+    return "₩" +
+        number.toLocaleString(
+            "en-US"
+        );
+
 }
 
-function act(type){
-let effects=[];
-if(type==="study"){
- player.study=clamp(player.study+5);player.energy=clamp(player.energy-15);
- effects=[["📚 Study","+5","positive"],["⚡ Energy","−15","negative"]];
-}
-if(type==="work"){
- player.money+=20000;player.energy=clamp(player.energy-20);
- effects=[["💰 Money","+₩20,000","positive"],["⚡ Energy","−20","negative"]];
-}
-if(type==="rest"){
- player.energy=clamp(player.energy+20);player.happiness=clamp(player.happiness+3);
- effects=[["⚡ Energy","+20","positive"],["😊 Happiness","+3","positive"]];
-}
-if(type==="friends"){
- player.money=Math.max(0,player.money-5000);player.happiness=clamp(player.happiness+15);player.energy=clamp(player.energy-10);
- effects=[["💰 Money","−₩5,000","negative"],["😊 Happiness","+15","positive"],["⚡ Energy","−10","negative"]];
-}
-save();
-document.getElementById("actions").classList.add("hidden");
-document.getElementById("result").innerHTML=`
-<div class="card result">
- <strong>DAY ${player.day} COMPLETE</strong><br>
- ${effects.map(e=>`<span class="${e[2]}">${e[0]} ${e[1]}</span>`).join("<br>")}
- <button class="btn" onclick="nextDay()">NEXT DAY</button>
-</div>`;
+
+/* =========================
+   UPDATE UI
+========================= */
+
+function updateUI() {
+
+    document.getElementById(
+        "money"
+    ).textContent =
+        formatMoney(game.money);
+
+
+    document.getElementById(
+        "income"
+    ).textContent =
+        "+" +
+        formatMoney(game.incomePerSecond)
+        + " / sec";
+
+
+    document.getElementById(
+        "production"
+    ).innerHTML =
+        "+" +
+        formatMoney(game.incomePerSecond)
+        +
+        "<span>per second</span>";
+
+
+    document.getElementById(
+        "level"
+    ).textContent =
+        "LV." + game.level;
+
+
+    document.getElementById(
+        "levelInfo"
+    ).textContent =
+        "Level " + game.level;
+
+
+    document.getElementById(
+        "customers"
+    ).textContent =
+        game.customers;
+
+
+    const cost =
+        getUpgradeCost();
+
+
+    document.getElementById(
+        "upgradeCost"
+    ).textContent =
+        "Cost: " +
+        formatMoney(cost);
+
+
+    const button =
+        document.getElementById(
+            "upgradeButton"
+        );
+
+
+    if (game.money >= cost) {
+
+        button.style.opacity = "1";
+
+    } else {
+
+        button.style.opacity = "0.55";
+
+    }
+
+
+    saveGame();
+
 }
 
-function nextDay(){
-player.day++;
-save();game();
+
+/* =========================
+   UPGRADE COST
+========================= */
+
+function getUpgradeCost() {
+
+    return Math.floor(
+        1000 *
+        Math.pow(
+            1.55,
+            game.level - 1
+        )
+    );
+
 }
-start();
+
+
+/* =========================
+   UPGRADE BUSINESS
+========================= */
+
+function upgradeBusiness() {
+
+    const cost =
+        getUpgradeCost();
+
+
+    if (game.money < cost) {
+
+        showFloatingMoney(
+            "Not enough money",
+            false
+        );
+
+        return;
+
+    }
+
+
+    game.money -= cost;
+
+
+    game.level++;
+
+
+    /*
+        Every upgrade increases
+        income by 50%.
+    */
+
+    game.incomePerSecond =
+        Math.floor(
+            100 *
+            Math.pow(
+                1.5,
+                game.level - 1
+            )
+        );
+
+
+    /*
+        Customers increase
+        as business grows.
+    */
+
+    game.customers =
+        12 +
+        ((game.level - 1) * 7);
+
+
+    updateUI();
+
+
+    showFloatingMoney(
+        "LEVEL UP! +₩",
+        true
+    );
+
+
+    /*
+        Small visual effect.
+    */
+
+    const business =
+        document.getElementById(
+            "business"
+        );
+
+
+    business.animate(
+        [
+            {
+                transform:
+                    "scale(1)"
+            },
+
+            {
+                transform:
+                    "scale(1.15)"
+            },
+
+            {
+                transform:
+                    "scale(1)"
+            }
+        ],
+        {
+            duration: 500
+        }
+    );
+
+}
+
+
+/* =========================
+   AUTOMATIC INCOME
+========================= */
+
+setInterval(
+    function () {
+
+        game.money +=
+            game.incomePerSecond;
+
+        updateUI();
+
+    },
+    1000
+);
+
+
+/* =========================
+   OFFLINE INCOME
+========================= */
+
+function calculateOfflineIncome() {
+
+    const now =
+        Date.now();
+
+
+    const last =
+        game.lastPlayed;
+
+
+    let seconds =
+        Math.floor(
+            (now - last) /
+            1000
+        );
+
+
+    /*
+        Prevent huge accidental
+        rewards while testing.
+
+        Maximum offline time:
+        8 hours.
+    */
+
+    const maxSeconds =
+        8 * 60 * 60;
+
+
+    seconds =
+        Math.min(
+            seconds,
+            maxSeconds
+        );
+
+
+    if (seconds < 30) {
+
+        return;
+
+    }
+
+
+    const earned =
+        Math.floor(
+            seconds *
+            game.incomePerSecond
+        );
+
+
+    if (earned <= 0) {
+
+        return;
+
+    }
+
+
+    game.money +=
+        earned;
+
+
+    document.getElementById(
+        "offlineMoney"
+    ).textContent =
+        "+" +
+        formatMoney(earned);
+
+
+    document.getElementById(
+        "offlineText"
+    ).textContent =
+        "Your Mini Mart earned money while you were away for "
+        +
+        formatTime(seconds)
+        +
+        ".";
+
+
+    document.getElementById(
+        "offlinePopup"
+    ).classList.add(
+        "show"
+    );
+
+
+    saveGame();
+
+}
+
+
+/* =========================
+   FORMAT TIME
+========================= */
+
+function formatTime(seconds) {
+
+    const hours =
+        Math.floor(
+            seconds / 3600
+        );
+
+
+    const minutes =
+        Math.floor(
+            (seconds % 3600) /
+            60
+        );
+
+
+    if (hours > 0) {
+
+        return (
+            hours +
+            "h " +
+            minutes +
+            "m"
+        );
+
+    }
+
+
+    return (
+        minutes +
+        " minutes"
+    );
+
+}
+
+
+/* =========================
+   OFFLINE POPUP
+========================= */
+
+function closeOfflinePopup() {
+
+    document.getElementById(
+        "offlinePopup"
+    ).classList.remove(
+        "show"
+    );
+
+    updateUI();
+
+}
+
+
+/* =========================
+   FLOATING MONEY
+========================= */
+
+function showFloatingMoney(
+    text,
+    positive = true
+) {
+
+    const element =
+        document.createElement(
+            "div"
+        );
+
+
+    element.className =
+        "money-float";
+
+
+    element.textContent =
+        positive
+            ? "💰 " + text
+            : "⚠️ " + text;
+
+
+    element.style.left =
+        (
+            window.innerWidth / 2
+            - 50
+        ) + "px";
+
+
+    element.style.top =
+        (
+            window.innerHeight / 2
+        ) + "px";
+
+
+    if (!positive) {
+
+        element.style.color =
+            "#ff8b8b";
+
+    }
+
+
+    document.body.appendChild(
+        element
+    );
+
+
+    setTimeout(
+        function () {
+
+            element.remove();
+
+        },
+        1200
+    );
+
+}
+
+
+/* =========================
+   SETTINGS
+========================= */
+
+function openSettings() {
+
+    document.getElementById(
+        "settingsPanel"
+    ).classList.add(
+        "show"
+    );
+
+}
+
+
+function closeSettings() {
+
+    document.getElementById(
+        "settingsPanel"
+    ).classList.remove(
+        "show"
+    );
+
+}
+
+
+/* =========================
+   RESET GAME
+========================= */
+
+function resetGame() {
+
+    const confirmed =
+        confirm(
+            "Reset Korea Idle Tycoon?\n\nAll progress will be deleted."
+        );
+
+
+    if (!confirmed) {
+
+        return;
+
+    }
+
+
+    localStorage.removeItem(
+        "koreaIdleTycoon"
+    );
+
+
+    game = {
+        ...DEFAULT_GAME
+    };
+
+
+    closeSettings();
+
+    updateUI();
+
+    showFloatingMoney(
+        "New Game!",
+        true
+    );
+
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function showHome() {
+
+    alert(
+        "🏙️ City\n\nYour city map will become much bigger in Build 0.1.2."
+    );
+
+}
+
+
+function showBusiness() {
+
+    alert(
+        "🏪 Business\n\nMore businesses will be added in Build 0.2."
+    );
+
+}
+
+
+function showMoney() {
+
+    alert(
+        "💰 Economy\n\nIncome: " +
+        formatMoney(
+            game.incomePerSecond
+        ) +
+        " / second"
+    );
+
+}
+
+
+function showInfo() {
+
+    alert(
+        "👤 Player\n\nKorea Idle Tycoon\nBuild 0.1.1"
+    );
+
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+calculateOfflineIncome();
+
+updateUI();
+
+
+/* =========================
+   SAVE WHEN LEAVING
+========================= */
+
+window.addEventListener(
+    "beforeunload",
+    function () {
+
+        saveGame();
+
+    }
+);
+
+
+/* =========================
+   SAVE WHEN PAGE HIDDEN
+========================= */
+
+document.addEventListener(
+    "visibilitychange",
+    function () {
+
+        if (
+            document.visibilityState
+            === "hidden"
+        ) {
+
+            saveGame();
+
+        }
+
+    }
+);
+
 </script>
+
 </body>
 </html>
